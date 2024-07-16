@@ -1,6 +1,7 @@
 import mongoose, { Mongoose } from "mongoose";
 
-const MONGODB_URI = "mongodb://0.0.0.0:27017/"
+// const MONGODB_URL = "mongodb://0.0.0.0:27017/"
+const MONGODB_URL = process.env.MONGODB_URL
 
 interface MongooseConnection {
     conn: Mongoose | null,
@@ -19,9 +20,9 @@ if (!cached) {
 export const connectToDatabase = async () => {
     if (cached.conn) return cached.conn
 
-    if(!MONGODB_URI) throw new Error('missing MONGODB_URL')
+    if(!MONGODB_URL) throw new Error('missing MONGODB_URL')
 
-        cached.promise = cached.promise || mongoose.connect(MONGODB_URI, {
+        cached.promise = cached.promise || mongoose.connect(MONGODB_URL, {
             dbName: 'bmfy-yt-tuto',
             bufferCommands: false
         })
