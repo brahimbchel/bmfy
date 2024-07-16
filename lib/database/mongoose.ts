@@ -1,6 +1,6 @@
 import mongoose, { Mongoose } from "mongoose";
 
-// const MONGODB_URL = "mongodb://0.0.0.0:27017/"
+// const MONGODB_URL = "mongodb://0.0.0.0:27017/bmfy-yt-tuto"
 const MONGODB_URL = process.env.MONGODB_URL
 
 interface MongooseConnection {
